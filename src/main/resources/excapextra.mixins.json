@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.forixaim.excapextra.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "excapextra.refmap.json",
+  "mixins": [
+    "MixinWeaponCapabilityPresetX"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

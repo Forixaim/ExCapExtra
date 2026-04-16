@@ -1,0 +1,39 @@
+[versions]
+
+minecraft = "1.20.1"
+moddevgradle = "2.0.141"
+epic-fight = "20.14.16-mc1.20.1-forge"
+epic-fight-extra = "1.1.9"
+
+# Version tags on Modrinth (usually the actual version number or a specific ID)
+embeddium = "0.3.31+mc1.20.1"
+mekanism = "10.4.16.80"
+draconic-evolution = "3.1.2.621"
+projecte = "4901949"
+mmmmmmmmmmmm = "1.20-2.0.9"
+battle-arts-api = "20.14.16.4"
+battle-arts = "20.14.16.8"
+invincible = "20.14.8.2-mc1.20.1-forge"
+mcSafeResources = "0.0.2"
+modPublish = "1.1.0"
+
+[libraries]
+
+embeddium = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
+battleArtsAPI = { module = "maven.modrinth:battle-arts-api", version.ref = "battle-arts-api" }
+battleArts = { module = "maven.modrinth:battle_arts", version.ref = "battle-arts" }
+mmmmmmmmmmmm = { module = "maven.modrinth:mmmmmmmmmmmm", version.ref = "mmmmmmmmmmmm" }
+epicFight = { module = "maven.modrinth:epic-fight", version.ref = "epic-fight" }
+epicFightExtra = { module = "maven.modrinth:epicfight-extra", version.ref = "epic-fight-extra"}
+invincible = {module = "maven.modrinth:epic-fight-invincible-lib", version.ref = "invincible"}
+
+[plugins]
+# Environment Specific
+eclipse = { id = "eclipse"}
+idea = { id = "idea"}
+
+#Core Gradle Stuff
+moddevgradle = { id = "net.neoforged.moddev.legacyforge", version.ref = "moddevgradle" }
+publisher = { id = "me.modmuss50.mod-publish-plugin", version.ref = "modPublish"}
+
+mcSafeResources = { id = "dev.echoellet.mc-safe-resources", version.ref = "mcSafeResources" }
