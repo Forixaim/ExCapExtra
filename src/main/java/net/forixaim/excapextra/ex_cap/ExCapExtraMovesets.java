@@ -8,6 +8,7 @@ import net.forixaim.excapextra.ExCapExtra;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.Enchantments;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.ex_cap.core.data.MoveSet;
 import yesman.epicfight.api.ex_cap.core.data.MoveSetEntry;
@@ -86,6 +87,65 @@ public class ExCapExtraMovesets
                             AnimationsX.SWORD_DASH, AnimationsX.SWORD_AIR_SLASH
                     )
                     .addInnateSkill((itemStack, playerPatch) -> EpicFightSkillsX.GUILLOTINE_AXE)
+    );
+
+    public static MoveSetEntry tridentMS = new MoveSetEntry(
+            EpicFightMod.identifier("trident"),
+            MoveSet.builder()
+                    .addLivingMotionModifier(LivingMotions.IDLE, ExtraAnimations.BIPED_HOLD_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.WALK, ExtraAnimations.BIPED_WALK_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.RUN, ExtraAnimations.BIPED_RUN_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.JUMP, ExtraAnimations.BIPED_JUMP_ONEHAND_POLEARM)
+                    .setMotionPredicate((entityPatch, interactionHand) ->
+                            entityPatch.getOriginal().isUsingItem() && entityPatch.getOriginal().getUseItem().getUseAnimation() == UseAnim.SPEAR ? LivingMotions.AIM : null)
+                    .addComboAttacks(
+                            ExtraAnimations.SPEAR_ONEHAND_AUTO1, ExtraAnimations.SPEAR_ONEHAND_AUTO2,
+                            AnimationsX.SPEAR_DASH, AnimationsX.SPEAR_ONEHAND_AIR_SLASH
+                    )
+                    .addInnateSkill((itemStack, playerPatch) ->
+                    {
+                        if (itemStack.getEnchantmentLevel(Enchantments.RIPTIDE) > 0) {
+                            return EpicFightSkillsX.TSUNAMI;
+                        } else if (itemStack.getEnchantmentLevel(Enchantments.CHANNELING) > 0) {
+                            return EpicFightSkillsX.WRATHFUL_LIGHTING;
+                        } else if (itemStack.getEnchantmentLevel(Enchantments.LOYALTY) > 0) {
+                            return EpicFightSkillsX.EVERLASTING_ALLEGIANCE;
+                        } else {
+                            return EpicFightSkillsX.GRASPING_SPIRE;
+                        }
+                    })
+    );
+
+    public static MoveSetEntry scytheMS = new MoveSetEntry(
+            ExCapExtra.extraIdentifier("scythe"),
+            MoveSet.builder()
+                    .addLivingMotionsRecursive(AnimationsX.BIPED_HOLD_SPEAR,
+                            LivingMotions.KNEEL, LivingMotions.SNEAK, LivingMotions.SWIM,
+                            LivingMotions.FLY, LivingMotions.CREATIVE_FLY, LivingMotions.CREATIVE_IDLE)
+                    .addLivingMotionModifier(LivingMotions.IDLE, ExtraAnimations.BIPED_HOLD_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.WALK, ExtraAnimations.BIPED_WALK_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.RUN, ExtraAnimations.BIPED_RUN_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.JUMP, ExtraAnimations.BIPED_JUMP_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.CHASE, AnimationsX.BIPED_WALK_SPEAR)
+                    .addLivingMotionModifier(LivingMotions.BLOCK, AnimationsX.SPEAR_GUARD)
+                    .addComboAttacks(
+                            ExtraAnimations.SCYTHE_TWOHAND_AUTO1, ExtraAnimations.SCYTHE_TWOHAND_AUTO2,
+                            ExtraAnimations.SCYTHE_TWOHAND_AUTO3, ExtraAnimations.SCYTHE_TWOHAND_AUTO4,
+                            ExtraAnimations.SCYTHE_TWOHAND_AUTO5, ExtraAnimations.SCYTHE_TWOHAND_DASH,
+                            ExtraAnimations.SCYTHE_TWOHAND_AIR_SLASH
+                    )
+                    .addInnateSkill((itemStack, playerPatch) -> ExtraSkills.SCYTHE_SKILL)
+    );
+
+    public static MoveSetEntry fistMS = new MoveSetEntry(
+            EpicFightMod.identifier("fist"),
+            MoveSet.builder()
+                    .addComboAttacks(
+                            AnimationsX.FIST_AUTO1, AnimationsX.FIST_AUTO2, AnimationsX.FIST_AUTO3,
+                            ExtraAnimations.FIST_AUTO4, ExtraAnimations.FIST_AUTO5,
+                            AnimationsX.FIST_DASH, AnimationsX.FIST_AIR_SLASH
+                    )
+                    .addInnateSkill((itemStack, playerPatch) -> EpicFightSkillsX.RELENTLESS_COMBO)
     );
 
     public static MoveSetEntry greatswordDaggerMS = new MoveSetEntry(

@@ -27,4 +27,10 @@ public class Conditionals
             .setCategory(CapabilityItem.WeaponCategories.GREATSWORD)
             .isVisibleOffHand(true)
     );
+
+    public static ConditionalEntry DEFAULT_SCYTHE = new ConditionalEntry(
+            ExCapExtra.extraIdentifier("scythe"), ProviderConditional.builder()
+            .setType(ProviderConditionalType.DEFAULT).isVisibleOffHand(false)
+            .setWieldStyle(EFXStyles.SCYTHE)
+    );
 }

@@ -16,4 +16,8 @@ public class EFExtraExCapDatasets
             .addMoveset(EFXStyles.DUAL_GREATSWORD, dualGreatswordMS.id())
             .addMoveset(EFXStyles.GREATSWORD_DAGGER, greatswordDaggerMS.id())
     );
+
+    public static final ExCapDataEntry SCYTHE = new ExCapDataEntry(ExCapExtra.extraIdentifier("scythe"), ExCapData.builder()
+            .addConditional(Conditionals.DEFAULT_SCYTHE.id())
+            .addMoveset(EFXStyles.SCYTHE, scytheMS.id()));
 }

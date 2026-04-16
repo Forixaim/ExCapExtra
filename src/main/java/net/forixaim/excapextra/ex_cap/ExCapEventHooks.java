@@ -6,25 +6,24 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.ex_cap.core.events.*;
 import yesman.epicfight.gameasset.ex_cap.Builders;
-import yesman.epicfight.gameasset.ex_cap.ExCapDataSets;
-import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
-import static net.forixaim.excapextra.ex_cap.ExCapExtraMovesets.sword1HMS;
-import static net.forixaim.excapextra.ex_cap.ExCapExtraMovesets.sword2HMS;
-
-@Mod.EventBusSubscriber(modid = ExCapExtra.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ExCapExtra.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExCapEventHooks
 {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerBuilder(ExCapBuilderCreationEvent event)
     {
         Builders.GREATSWORD.template().canBePlacedOffhand(true);
+        event.addBuilder(ExCapExtraBuilders.SCYTHE);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerMovesets(ExCapMovesetRegistryEvent event)
     {
         event.addMoveSet(
+                ExCapExtraMovesets.fistMS,
+                ExCapExtraMovesets.scytheMS,
+                ExCapExtraMovesets.tridentMS,
                 ExCapExtraMovesets.axe1h,
                 ExCapExtraMovesets.sword1HMS,
                 ExCapExtraMovesets.bowMS,
@@ -55,7 +54,8 @@ public class ExCapEventHooks
     public static void registerData(ExCapDataRegistrationEvent event)
     {
         event.addData(
-                EFExtraExCapDatasets.GREATSWORD
+                EFExtraExCapDatasets.GREATSWORD,
+                EFExtraExCapDatasets.SCYTHE
         );
 
     }
@@ -64,5 +64,6 @@ public class ExCapEventHooks
     public static void populateData(ExCapabilityBuilderPopulationEvent event)
     {
         event.registerData(Builders.GREATSWORD.id(), EFExtraExCapDatasets.GREATSWORD.id());
+        event.registerData(ExCapExtraBuilders.SCYTHE.id(), EFExtraExCapDatasets.SCYTHE.id());
     }
 }

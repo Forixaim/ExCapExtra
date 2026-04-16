@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "excapextra.refmap.json",
   "mixins": [
+    "MixinMixinItemCapabilityProvider",
     "MixinWeaponCapabilityPresetX"
   ],
   "client": [

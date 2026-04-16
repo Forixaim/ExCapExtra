@@ -1,5 +1,6 @@
 package net.forixaim.excapextra;
 
+import com.asanginxst.epicfightx.EpicFightExtraMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -18,6 +19,11 @@ public class ExCapExtra {
     public static ResourceLocation identifier(String name)
     {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    }
+
+    public static ResourceLocation extraIdentifier(String name)
+    {
+        return ResourceLocation.fromNamespaceAndPath(EpicFightExtraMod.MOD_ID, name);
     }
 
     public ExCapExtra(FMLJavaModLoadingContext context) {
