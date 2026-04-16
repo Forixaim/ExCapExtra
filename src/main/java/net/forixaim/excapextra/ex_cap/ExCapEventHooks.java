@@ -24,6 +24,8 @@ public class ExCapEventHooks
                 ExCapExtraMovesets.fistMS,
                 ExCapExtraMovesets.scytheMS,
                 ExCapExtraMovesets.tridentMS,
+                ExCapExtraMovesets.dualTrident,
+                ExCapExtraMovesets.tridentShieldMS,
                 ExCapExtraMovesets.axe1h,
                 ExCapExtraMovesets.sword1HMS,
                 ExCapExtraMovesets.bowMS,
@@ -47,7 +49,8 @@ public class ExCapEventHooks
     @SubscribeEvent
     public static void registerConditionals(ConditionalRegistryEvent event)
     {
-        event.addConditional(Conditionals.DUAL_GREATSWORD, Conditionals.GREATSWORD_DAGGER);
+        event.addConditional(Conditionals.DUAL_GREATSWORD, Conditionals.GREATSWORD_DAGGER, Conditionals.DEFAULT_SCYTHE, Conditionals.SHIELD_OFFHAND, Conditionals.DUAL_TRIDENT);
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -55,7 +58,8 @@ public class ExCapEventHooks
     {
         event.addData(
                 EFExtraExCapDatasets.GREATSWORD,
-                EFExtraExCapDatasets.SCYTHE
+                EFExtraExCapDatasets.SCYTHE,
+                EFExtraExCapDatasets.TRIDENT
         );
 
     }
@@ -65,5 +69,6 @@ public class ExCapEventHooks
     {
         event.registerData(Builders.GREATSWORD.id(), EFExtraExCapDatasets.GREATSWORD.id());
         event.registerData(ExCapExtraBuilders.SCYTHE.id(), EFExtraExCapDatasets.SCYTHE.id());
+        event.registerData(Builders.TRIDENT.id(), EFExtraExCapDatasets.TRIDENT.id());
     }
 }

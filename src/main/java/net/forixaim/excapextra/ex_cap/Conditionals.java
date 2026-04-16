@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.ex_cap.core.data.ConditionalEntry;
 import yesman.epicfight.api.ex_cap.core.provider.ProviderConditional;
 import yesman.epicfight.api.ex_cap.core.provider.ProviderConditionalType;
+import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
 public class Conditionals
@@ -27,6 +28,28 @@ public class Conditionals
             .setCategory(CapabilityItem.WeaponCategories.GREATSWORD)
             .isVisibleOffHand(true)
     );
+
+    public static final ConditionalEntry DUAL_TRIDENT =
+            new ConditionalEntry(
+                    ExCapExtra.identifier("shield_offhand"),
+                    ProviderConditional.builder()
+                            .setType(ProviderConditionalType.WEAPON_CATEGORY)
+                            .setHand(InteractionHand.OFF_HAND)
+                            .setCategory(CapabilityItem.WeaponCategories.TRIDENT)
+                            .setWieldStyle(ExtraExCapStyles.DUAL_TRIDENT)
+                            .isVisibleOffHand(true)
+            );
+
+    public static final ConditionalEntry SHIELD_OFFHAND =
+            new ConditionalEntry(
+                    ExCapExtra.identifier("shield_offhand"),
+                    ProviderConditional.builder()
+                            .setType(ProviderConditionalType.WEAPON_CATEGORY)
+                            .setHand(InteractionHand.OFF_HAND)
+                            .setCategory(CapabilityItem.WeaponCategories.SHIELD)
+                            .setWieldStyle(ExtraExCapStyles.TRIDENT_SHIELD)
+                            .isVisibleOffHand(true)
+            );
 
     public static ConditionalEntry DEFAULT_SCYTHE = new ConditionalEntry(
             ExCapExtra.extraIdentifier("scythe"), ProviderConditional.builder()

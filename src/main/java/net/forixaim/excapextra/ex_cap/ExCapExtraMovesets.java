@@ -92,15 +92,21 @@ public class ExCapExtraMovesets
     public static MoveSetEntry tridentMS = new MoveSetEntry(
             EpicFightMod.identifier("trident"),
             MoveSet.builder()
-                    .addLivingMotionModifier(LivingMotions.IDLE, ExtraAnimations.BIPED_HOLD_ONEHAND_POLEARM)
-                    .addLivingMotionModifier(LivingMotions.WALK, ExtraAnimations.BIPED_WALK_ONEHAND_POLEARM)
-                    .addLivingMotionModifier(LivingMotions.RUN, ExtraAnimations.BIPED_RUN_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.IDLE, AnimationsX.BIPED_HOLD_SPEAR)
+                    .addLivingMotionModifier(LivingMotions.WALK, AnimationsX.BIPED_WALK_SPEAR)
+                    .addLivingMotionModifier(LivingMotions.RUN, AnimationsX.BIPED_RUN_SPEAR)
                     .addLivingMotionModifier(LivingMotions.JUMP, ExtraAnimations.BIPED_JUMP_ONEHAND_POLEARM)
+                    .addLivingMotionModifier(LivingMotions.AIM, AnimationsX.BIPED_JAVELIN_AIM)
+                    .addLivingMotionModifier(LivingMotions.SHOT, AnimationsX.BIPED_JAVELIN_THROW)
                     .setMotionPredicate((entityPatch, interactionHand) ->
                             entityPatch.getOriginal().isUsingItem() && entityPatch.getOriginal().getUseItem().getUseAnimation() == UseAnim.SPEAR ? LivingMotions.AIM : null)
                     .addComboAttacks(
-                            ExtraAnimations.SPEAR_ONEHAND_AUTO1, ExtraAnimations.SPEAR_ONEHAND_AUTO2,
-                            AnimationsX.SPEAR_DASH, AnimationsX.SPEAR_ONEHAND_AIR_SLASH
+                            ExtraAnimations.TRIDENT_TWOHAND_AUTO1,
+                            ExtraAnimations.TRIDENT_TWOHAND_AUTO2,
+                            ExtraAnimations.TRIDENT_TWOHAND_AUTO3,
+                            ExtraAnimations.TRIDENT_TWOHAND_AUTO4,
+                            ExtraAnimations.TRIDENT_TWOHAND_AUTO5,
+                            AnimationsX.SPEAR_DASH, AnimationsX.SPEAR_TWOHAND_AIR_SLASH
                     )
                     .addInnateSkill((itemStack, playerPatch) ->
                     {
@@ -114,6 +120,31 @@ public class ExCapExtraMovesets
                             return EpicFightSkillsX.GRASPING_SPIRE;
                         }
                     })
+    );
+
+    public static MoveSetEntry tridentShieldMS = new MoveSetEntry(
+            ExCapExtra.identifier("trident_shield"),
+            MoveSet.builder()
+                    .parent(tridentMS.id())
+                    .addLivingMotionModifier(LivingMotions.IDLE, AnimationsX.BIPED_HOLD_LONGSWORD)
+                    .addLivingMotionModifier(LivingMotions.WALK, AnimationsX.BIPED_WALK_LONGSWORD)
+                    .addLivingMotionModifier(LivingMotions.RUN, AnimationsX.BIPED_RUN_LONGSWORD)
+                    .setMotionPredicate((entityPatch, interactionHand) ->
+                            entityPatch.getOriginal().isUsingItem() && entityPatch.getOriginal().getUseItem().getUseAnimation() == UseAnim.SPEAR ? LivingMotions.AIM : null)
+                    .addComboAttacks(
+                            AnimationsX.TRIDENT_AUTO1, AnimationsX.TRIDENT_AUTO2, AnimationsX.TRIDENT_AUTO3,
+                            AnimationsX.SPEAR_DASH, ExtraAnimations.TRIDENT_ONEHAND_AIR_SLASH
+                    ));
+
+    public static MoveSetEntry dualTrident = new MoveSetEntry(
+            ExCapExtra.identifier("dual_trident"),
+            MoveSet.builder()
+                    .parent(tridentMS.id())
+                    .addLivingMotionsRecursive(AnimationsX.BIPED_HOLD_DUAL_WEAPON, LivingMotions.IDLE, LivingMotions.WALK)
+                    .addLivingMotionModifier(LivingMotions.RUN, AnimationsX.BIPED_RUN_DUAL)
+                    .addLivingMotionModifier(LivingMotions.BLOCK, AnimationsX.SWORD_DUAL_GUARD)
+                    .addComboAttacks(AnimationsX.SWORD_DUAL_AUTO1, AnimationsX.SWORD_DUAL_AUTO2, AnimationsX.SWORD_DUAL_AUTO3, AnimationsX.SWORD_DUAL_DASH, AnimationsX.SWORD_DUAL_AIR_SLASH)
+                    .setMotionPredicate(((patch, interactionHand) -> null))
     );
 
     public static MoveSetEntry scytheMS = new MoveSetEntry(
