@@ -6,7 +6,6 @@ import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.ex_cap.core.data.ConditionalEntry;
 import yesman.epicfight.api.ex_cap.core.provider.ProviderConditional;
 import yesman.epicfight.api.ex_cap.core.provider.ProviderConditionalType;
-import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
 public class Conditionals

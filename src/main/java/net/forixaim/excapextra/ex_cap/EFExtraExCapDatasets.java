@@ -4,7 +4,6 @@ import com.asanginxst.epicfightx.gameassets.EFXStyles;
 import net.forixaim.excapextra.ExCapExtra;
 import yesman.epicfight.api.ex_cap.core.data.ExCapData;
 import yesman.epicfight.api.ex_cap.core.data.ExCapDataEntry;
-import yesman.epicfight.gameasset.ex_cap.MainConditionals;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import static net.forixaim.excapextra.ex_cap.ExCapExtraMovesets.*;
 
