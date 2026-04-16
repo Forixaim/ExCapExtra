@@ -189,7 +189,8 @@ publishMods {
         projectId.set("2KTA0hIP")
         accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
         minecraftVersions.add(minecraft_version)
-        requires("epic-fight")
+        requires("epic-fight", "epicfight-extra")
+
     }
 
     discord {
